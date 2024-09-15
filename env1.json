@@ -1,27 +1,15 @@
 {
-	"id": "bf9bcff9-258d-41e8-93b3-9ece3c04ad40",
-	"name": "env1",
+	"id": "ca33aca8-4c28-4f74-bb1b-814170b1120e",
+	"name": "env",
 	"values": [
 		{
-			"key": "url",
-			"value": "http://192.168.1.127:8000",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "id",
-			"value": "28",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "test_ol",
-			"value": "true",
+			"key": "password1",
+			"value": "",
 			"type": "default",
 			"enabled": true
 		}
 	],
 	"_postman_variable_scope": "environment",
-	"_postman_exported_at": "2024-09-15T20:16:02.663Z",
+	"_postman_exported_at": "2024-09-15T20:50:32.812Z",
 	"_postman_exported_using": "Postman/11.12.0"
 }

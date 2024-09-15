@@ -1,408 +1,122 @@
 {
 	"info": {
-		"_postman_id": "424d681e-210d-48d6-a11a-1a76963fa486",
-		"name": "collection",
+		"_postman_id": "4d36107a-a9e5-40ef-b357-efcc42299209",
+		"name": "Login&register",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "37320115",
-		"_collection_link": "https://wissemtestingapi.postman.co/workspace/dsqfedcs-Workspace~117dfb77-62a5-4466-9a11-3c5d5b345f38/collection/37320115-424d681e-210d-48d6-a11a-1a76963fa486?action=share&source=collection_link&creator=37320115"
+		"_exporter_id": "37320115"
 	},
 	"item": [
 		{
-			"name": "project",
-			"item": [
+			"name": "register",
+			"event": [
 				{
-					"name": "get greating text",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Check get greeting request response\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"",
-									"pm.test(\"Check the response msg\", function () {",
-									"    pm.expect(pm.response.text()).to.include(\"bienvenue sur notre site\");",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}",
-							"host": [
-								"{{url}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get all item",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Check Get all request status\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Check the reponse parameters\", function(){",
-									"    let rep = pm.response.json()[0];",
-									"    pm.expect(rep).to.have.property(\"id\")",
-									"    pm.expect(rep).to.have.property(\"description\")",
-									"    pm.expect(rep).to.have.property(\"title\")",
-									"});",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/items/",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"items",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get a specific item",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"var rep = pm.response.json();",
-									"let test_ok = true;",
-									"",
-									"pm.test(\"Check Get specific item request status\", function () {",
-									"    pm.response.to.have.status(200);",
-									"    if(pm.response.code != 200){",
-									"        pm.environment.set(\"test_ok\", false)",
-									"    }",
-									"});",
-									"",
-									"pm.test(\"Check response parameters\", function(){",
-									"    pm.expect(rep).to.have.property(\"id\");",
-									"    pm.expect(rep).to.have.property(\"description\");",
-									"    pm.expect(rep).to.have.property(\"title\");",
-									"});",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/items/{{id}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"items",
-								"{{id}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "add specific item",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"",
-									"",
-									"",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "  {\n    \"title\": \"test\",\n    \"description\": \"test\"\n  }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/items/",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"items",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update a specific item",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"let test_ok = pm.environment.get(\"test_ok\");",
-									"",
-									"",
-									"(test_ok?pm.test:pm.test.skip)(\"Successful UPDATE request\", function () {",
-									"    pm.expect(pm.response.code).to.be.eqls(200);",
-									"});",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "  {\n    \"title\": \"testsssdsdsd\",\n    \"description\": \"test67\"\n  }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/items/{{id}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"items",
-								"{{id}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update an item",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"var id = pm.collectionVariables.get(\"id\");",
-									"pm.test(\"Body matches string\", function () {",
-									"    ",
-									"",
-									"let test_ok = pm.environment.get(\"test_ok\");",
-									"",
-									"",
-									"(test_ok?pm.test:pm.test.skip)(\"Successful UPDATE request\", function () {",
-									"    pm.expect(pm.response.code).to.be.eqls(200);",
-									"});",
-									"",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "  {\n    \"description\": \"diung\"\n  }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/items/25",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"items",
-								"25"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete a user",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"let test_ok = pm.environment.get(\"test_ok\");",
-									"",
-									"",
-									"(test_ok?pm.test:pm.test.skip)(\"Successful UPDATE request\", function () {",
-									"    pm.expect(pm.response.code).to.be.eqls(200);",
-									"});",
-									"",
-									"(test_ok?pm.test:pm.test.skip)(\"Check the reponse parameters\", function(){",
-									"    var rep = pm.response.json();",
-									"    pm.expect(rep).to.have.property(\"id\")",
-									"    pm.expect(rep).to.have.property(\"description\")",
-									"    pm.expect(rep).to.have.property(\"title\")",
-									"});",
-									"",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/items/{{id}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"items",
-								"{{id}}"
-							]
-						}
-					},
-					"response": []
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var rep = pm.response.json();",
+							"var test_ok = false;",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(201);",
+							"    test_ok = true;",
+							"});",
+							"",
+							"pm.test(\"conformité des données\", function(){",
+							"    pm.expect(rep).to.have.property(\"name\");",
+							"    pm.expect(rep).to.have.property(\"job\");",
+							"    pm.expect(rep).to.have.property(\"id\");",
+							"    pm.expect(rep).to.have.property(\"createdAt\");",
+							"});",
+							"if(!test_ok){",
+							"pm.execution.setNextRequest(\"users\")",
+							"}else{",
+							"pm.execution.setNextRequest(\"null\");",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
 				}
-			]
-		}
-	],
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"type": "text/javascript",
-				"packages": {},
-				"exec": [
-					""
-				]
-			}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"{{$randomWord}}\",\n    \"job\": \"{{$randomWord}}\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
 		},
 		{
-			"listen": "test",
-			"script": {
-				"type": "text/javascript",
-				"packages": {},
-				"exec": [
-					""
-				]
-			}
-		}
-	],
-	"variable": [
-		{
-			"key": "id",
-			"value": "21",
-			"type": "string"
-		},
-		{
-			"key": "url",
-			"value": "http://192.168.1.127:8000",
-			"type": "string"
-		},
-		{
-			"key": "id_added",
-			"value": "21",
-			"type": "string"
+			"name": "users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    console.log(\"papa\")",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"{{$randomPassword}}\"\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users?page=2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

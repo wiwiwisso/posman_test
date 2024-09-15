@@ -9,14 +9,14 @@ pipeline{
 
         stage('run postman collecttion with postman'){
             steps{
-                sh 'newman run collection.postman_collection.json -e env1.json'
+                sh 'newman run collection.postman_collection.json -e env1.json -r cli,json --reporter-json-export results.xml'
             }
         }
     }
     post {
         always {
             // Archivage des résultats JUnit pour affichage dans Jenkins
-            junit 'test-results.xml'
+            junit 'results.xml'
         }
     }
 }

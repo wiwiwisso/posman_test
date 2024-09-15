@@ -13,4 +13,10 @@ pipeline{
             }
         }
     }
+    post {
+        always {
+            // Archivage des résultats JUnit pour affichage dans Jenkins
+            junit 'test-results.xml'
+        }
+    }
 }

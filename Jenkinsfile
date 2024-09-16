@@ -1,6 +1,6 @@
 pipeline{
     agent {docker {
-        image 'postman/newman:alpine'
+        image 'postman/newman'
     } }
     stages{
         stage('newman version'){
@@ -18,7 +18,6 @@ pipeline{
     }
     post {
         always {
-            // Archivage des résultats JUnit pour affichage dans Jenkins
             junit 'results.xml'
         }
     }

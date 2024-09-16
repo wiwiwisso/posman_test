@@ -7,9 +7,9 @@ pipeline{
                 sh 'npm i newman'
             }
         }
-         stage('utiliser param'){
+        stage('utiliser param'){
             steps{
-                echo "${params.env}"
+                echo '${params.env}'
             }
         }
 

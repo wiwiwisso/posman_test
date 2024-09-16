@@ -6,14 +6,7 @@ pipeline{
             steps{
                 sh 'npm i newman'
             }
-        }
-        stage('utiliser param'){
-            steps{
-                echo '${params.env}'
-            }
-        }
-
-       
+        }  
 
         stage('node version'){
             steps{
@@ -31,6 +24,12 @@ pipeline{
             steps{
                 sh 'newman run collection.postman_collection.json -e env1.json -r --reporters cli,junit,html  --reporter-html-export results.html'
                     
+            }
+        }
+
+         stage('utiliser param'){
+            steps{
+                echo '${params.env}'
             }
         }
     }

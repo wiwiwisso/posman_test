@@ -1,8 +1,6 @@
 pipeline{
-    agent { docker{
-        image 'node:22.8'
-    } 
-    }
+
+    agent { docker 'node:22.8'}
     stages{
         stage('newman version'){
             steps{

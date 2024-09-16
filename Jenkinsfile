@@ -8,7 +8,7 @@ pipeline{
             }
         }
 
-        stage('newman version'){
+        stage('node version'){
             steps{
                 sh 'npm -v'
             }

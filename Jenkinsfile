@@ -1,5 +1,7 @@
 pipeline{
-    agent any
+    agent {docker {
+        image 'postman/newman:alpine'
+    } }
     stages{
         stage('newman version'){
             steps{

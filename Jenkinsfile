@@ -1,13 +1,7 @@
 pipeline{
 
-    agent { docker 'node:22.8'}
+    agent any
     stages{
-        stage('install newman'){
-            steps{
-                sh 'npm i newman'
-            }
-        }  
-
         stage('node version'){
             steps{
                 sh 'npm -v'

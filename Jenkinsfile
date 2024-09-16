@@ -7,6 +7,13 @@ pipeline{
                 sh 'npm i newman'
             }
         }
+         stage('utiliser param'){
+            steps{
+                echo "${params.env}"
+            }
+        }
+
+       
 
         stage('node version'){
             steps{

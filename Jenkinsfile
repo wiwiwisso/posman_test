@@ -27,11 +27,7 @@ pipeline{
             }
         }
 
-         stage('utiliser param'){
-            steps{
-                echo '${params.env}'
-            }
-        }
+        
     }
 
     

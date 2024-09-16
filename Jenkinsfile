@@ -22,7 +22,7 @@ pipeline{
 
         stage('run postman collecttion with postman'){
             steps{
-                sh 'newman run collection.postman_collection.json -e env1.json -r --reporters cli,junit,html  --reporter-html-export results.html'
+                sh 'newman run collection.postman_collection.json -e env1.json'
                     
             }
         }

@@ -1,8 +1,21 @@
 pipeline{
-    agent {docker {
-        image 'postman/newman'
-    } }
+    agent { docker{
+        image 'node:22.8'
+    } 
+    }
     stages{
+        stage('newman version'){
+            steps{
+                sh 'npm i newman'
+            }
+        }
+
+        stage('newman version'){
+            steps{
+                sh 'npm -v'
+            }
+        }
+
         stage('newman version'){
             steps{
                 sh 'newman -v'

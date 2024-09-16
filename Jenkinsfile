@@ -21,6 +21,14 @@ pipeline{
             }
         }
 
+
+        stage('run postman collecttion with postman'){
+            steps{
+               eccho '${params.env}'
+                    
+            }
+        }
+
         
     }
 

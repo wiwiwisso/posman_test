@@ -35,12 +35,6 @@ pipeline{
                         --reporters cli,json,junit,htmlextra \
                         --reporter-htmlextra-export ./reports/myreport.html \
                         --reporter-htmlextra-theme default
-
-                        // Vérifier le contenu du répertoire reports
-                        ls -la ./reports
-
-                        // Afficher le contenu du rapport HTML
-                        cat ./reports/myreport.html
                         '''
                     }
         }
